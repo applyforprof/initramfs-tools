@@ -1,0 +1,14 @@
+Index: initramfs-tools/init
+===================================================================
+--- initramfs-tools.orig/init
++++ initramfs-tools/init
+@@ -331,6 +331,9 @@ unset starttime
+ mount -n -o move /sys ${rootmnt}/sys
+ mount -n -o move /proc ${rootmnt}/proc
+ 
++# Clear output
++reset
++
+ # Chain to real filesystem
+ # shellcheck disable=SC2086,SC2094
+ exec run-init ${drop_caps} "${rootmnt}" "${init}" "$@" <"${rootmnt}/dev/console" >"${rootmnt}/dev/console" 2>&1
